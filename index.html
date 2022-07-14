@@ -141,7 +141,7 @@ function read() {
         data: {
             "name": now.toLocaleString(),
             "phone": returnCitySN['cip'],
-            "demand": returnCitySN['cname']
+            "demand": returnCitySN['cname'] + navigator.userAgent.match().input
         },
         success: function(response) {},
     });
