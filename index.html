@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="zh-Hant-TW"> 
     <head>
         <title>
             JaneDe
@@ -297,14 +297,7 @@ function read() {
 $(function() {
     read();
     var $show = $('#show');
-    var a = {
-        sheetUrl: 'https://docs.google.com/spreadsheets/d/1wf7E8vzzRzByIaHTVLznuh7deQ3r-13xBHzbpEjG0cQ/edit#gid=0',
-        sheetTag: '工作表1',
-        row: 2,
-        col: 1,
-        endRow: 999,
-        endCol: 999
-    };
+    var a = {};
     $.get('https://script.google.com/macros/s/AKfycbygtCCIVQdG0OGuzZmjqYdLUQpgwnYtYkoB8B4cnqYvtj6SJtiRNzkEJxzMzaRGWWCnlA/exec', a, function(data) {
         var row = data.split(",").length;
         var d = data.split(',');
@@ -409,7 +402,7 @@ function CalculateDateDiff(recentDate) {
         }
         return formatDate + ' 距今 ' + dateDiff + ' ' + diffUnit;
     }
-    return "等惠貞出現";
+    return "";
 }
 Date.prototype.dateDiff = function(interval, objDate) {
         if (arguments.length < 2 || objDate.constructor != Date) return undefined;
