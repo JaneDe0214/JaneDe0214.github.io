@@ -85,7 +85,7 @@
   </div>
 </div>
 
-  <div id="head" class="jumbotron text-center">讀取日記資料庫中...</div>
+  <div id="head" class="jumbotron text-center">進入JadeDe日記中...</div>
   <div id="main" class="container"></div>
   <a id="gotop" style="display: none;"></a>
   <a id="godown" style="display: inline;"></a>
@@ -137,11 +137,13 @@
 function read() {
     var now = new Date();
     $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbxWVh7_SJ8TTkta3DGQvL6g0ntws1fI5k7r_SPMhQyWbtpE_El75W0wiyOJizrzhspuAA/exec",
+        url: "https://script.google.com/macros/s/AKfycbzAEhu7Ea8-1Z4i8bCQ1URs3lLHrw_FSpfjJLv0Rvc_I8_WSPjGvxjV1pdAlQyFrgMu/exec",
         data: {
-            "name": now.toLocaleString(),
-            "phone": returnCitySN['cip'],
-            "demand": returnCitySN['cname'] + navigator.userAgent.match().input
+            "date": now.toLocaleString(),
+            "ip": returnCitySN['cip'],
+            "zone": returnCitySN['cname'],
+			"lan": navigator.language,
+			"device": navigator.userAgent.match().input
         },
         success: function(response) {},
     });
