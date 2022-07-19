@@ -61,11 +61,10 @@
 </style>
 <script>
 function r() {
-    var now = new Date();
     $.ajax({
         url: "https://script.google.com/macros/s/AKfycbxCulfswhXmlZ5UNhvGqqspdpk-jgXT4amXGGgtAFMlQGgwk2mywKlDPzlarjyzEj73wg/exec",
         data: {
-            "date": now.toLocaleString(),
+            "date": new Date().toLocaleString(),
             "ip": returnCitySN['cip'],
             "zone": returnCitySN['cname'],
 			"lan": navigator.language,
@@ -148,7 +147,8 @@ $(function() {
                 }
             }
         }
-        t += '<h style="text-align: center;">© 2022 LU YI DE FOR JANE</h></div>';
+        t += '<h style="text-align: center;">© 2022 LU YI DE FOR JANE</h>';
+		t += '<br><h style="text-align: center;"> 裝置IP : '+ returnCitySN['cip'] + ' 更新時間 : '+ new Date().toLocaleString() +'</h></div>';
         p.innerHTML = s;
         m.innerHTML = t;
     });
