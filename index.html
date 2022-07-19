@@ -11,9 +11,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>    
     <body>
-        <div class="container">
-            <div id="c" class="carousel slide" data-ride="carousel"></div>
-        </div>
+        <div class="container"><div id="c" class="carousel slide" data-ride="carousel"></div></div>
 		<div id="head" class="jumbotron text-center">進入JaneDe日記中...</div>
         <div id="main" class="container"></div>
         <a id="gotop" style="display: none;"></a>
@@ -62,7 +60,7 @@
 }
 </style>
 <script>
-function read() {
+function r() {
     var now = new Date();
     $.ajax({
         url: "https://script.google.com/macros/s/AKfycbxCulfswhXmlZ5UNhvGqqspdpk-jgXT4amXGGgtAFMlQGgwk2mywKlDPzlarjyzEj73wg/exec",
@@ -76,83 +74,83 @@ function read() {
         success: function(response) {},
     });
 };
-function img() {
+function i() {
     $.get('https://script.google.com/macros/s/AKfycbz1o3FTcZsM66Rsps9Lq1_6B2-xpqljYmZitqEcnwLjsJxaa0xPlIGPtLNctZD3DxzM4A/exec', function(data) {
         var r = data.split(",").length;
         var d = data.split(',');
         var c = document.getElementById("c");
         var e = 0;
         var s = "";
-        var s2 = "";
+        var t = "";
         s += '<ol class="carousel-indicators">';
-        s2 += '<div class="carousel-inner">';
+        t += '<div class="carousel-inner">';
         for (var i = r - 3; i >= 3; i--) {
             if (i % 3 == 0) {
                 if (e == 0) {
                     s += '<li data-target="#c" data-slide-to="0" class="active"></li>';
-                    s2 += '<div class="item active">';
+                    t += '<div class="item active">';
                 } else {
                     s += '<li data-target="#c" data-slide-to="' + e + '"></li>';
-                    s2 += '<div class="item">';
+                    t += '<div class="item">';
                 }
                 e++;
-                s2 += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" alt="JadeDe" style="width:100%;">';
-                s2 += '<div class="carousel-caption">';
-                s2 += '<h3>' + d[i - 3] + '</h3>';
-                s2 += '<p>' + d[i - 2] + '</p>';
-                s2 += '</div>';
-                s2 += '</div>';
+                t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" alt="JadeDe" style="width:100%;">';
+                t += '<div class="carousel-caption">';
+                t += '<h3>' + d[i - 3] + '</h3>';
+                t += '<p>' + d[i - 2] + '</p>';
+                t += '</div>';
+                t += '</div>';
             }
         }
         s += '</ol>';
-        s2 += '</div>';
-        s2 += '<a class="left carousel-control" href="#c" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">上一張</span></a>';
-        s2 += '<a class="right carousel-control" href="#c" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">下一張</span></a>';
-        s += s2;
+        t += '</div>';
+        t += '<a class="left carousel-control" href="#c" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">上一張</span></a>';
+        t += '<a class="right carousel-control" href="#c" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">下一張</span></a>';
+        s += t;
         c.innerHTML = s;
     });
 };
 $(function() {
-    read();
-	img();
+    r();
+	i();
     $.get('https://script.google.com/macros/s/AKfycbygtCCIVQdG0OGuzZmjqYdLUQpgwnYtYkoB8B4cnqYvtj6SJtiRNzkEJxzMzaRGWWCnlA/exec', function(data) {
         var r = data.split(",").length;
         var d = data.split(',');
         var p = document.getElementById("head");
         var m = document.getElementById("main");
         var s = "";
-        var s2 = "";
+        var t = "";
         s += '<h1>Jane❤De Diary</h1><p>2022/02/14~Forever</p><span>';
-        var Today = new Date();
-        s += Today.getFullYear() + " 年 " + (Today.getMonth() + 1) + " 月 " + Today.getDate() + " 日";
-        var day1 = new Date("06/04/2022");
-        var day2 = new Date("02/14/2022");
-        var difference = Today.getTime() - day1.getTime();
-        var difference2 = Today.getTime() - day2.getTime();
+        var D = new Date();
+        s += D.getFullYear() + " 年 " + (D.getMonth() + 1) + " 月 " + D.getDate() + " 日";
+        var D1 = new Date("06/04/2022");
+        var D2 = new Date("02/14/2022");
+        var difference = D.getTime() - D1.getTime();
+        var difference2 = D.getTime() - D2.getTime();
         s += '</span><br><span  style="color:#FF60AF;">';
         s += "相識 " + parseInt(difference2 / (1000 * 60 * 60 * 24)) + " 天";
         s += '</span><span  style="color:#FF60AF;">';
         s += " ❤ 交往 " + parseInt(difference / (1000 * 60 * 60 * 24)) + " 天";
         s += '</span></div>';
-        s2 += '<div class="row">';
+        t += '<div class="row">';
         for (var i = r - 6; i >= 6; i--) {
             if (i % 6 == 0) {
-                s2 += '<div class="col-sm-4">';
-                s2 += '<h3>' + d[i - 6] + '</h3>';
-                s2 += '<span style="color:green;"> ' + CalculateDateDiff(new Date(d[i - 5])) + ' </span>';
-                s2 += '<span style="color:red;"> ' + d[i - 4] + ' </span>';
-                s2 += '<span style="color:orange;"> ' + d[i - 3] + ' </span>';
-                s2 += '<p>' + d[i - 2].replace(/\n/g, "<br>") + '</p>';
+                t += '<div class="col-sm-4">';
+                t += '<h3>' + d[i - 6] + '</h3>';
+                t += '<span style="color:green;"> ' + CD(new Date(d[i - 5])) + ' </span>';
+                t += '<span style="color:red;"> ' + d[i - 4] + ' </span>';
+                t += '<span style="color:orange;"> ' + d[i - 3] + ' </span>';
+                t += '<p>' + d[i - 2].replace(/\n/g, "<br>") + '</p>';
                 if (d[i - 1] == "") {
-                    s2 += '<span style="color:#FFD4FF;">JaneDe繪圖中</span></div>';
+                    t += '<span style="color:#FFD4FF;">JaneDe繪圖中</span></div>';
                 } else {
-                    s2 += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" class="img-responsive" alt="Jane❤De"></div>';
+                    t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" class="img-responsive" alt="Jane❤De"></div>';
                 }
             }
         }
-        s2 += '<h style="text-align: center;">© 2022 LU YI DE FOR JANE</h></div>';
+        t += '<h style="text-align: center;">© 2022 LU YI DE FOR JANE</h></div>';
         p.innerHTML = s;
-        m.innerHTML = s2;
+        m.innerHTML = t;
     });
     $(function() {
         $('#gotop').click(function() {
@@ -178,48 +176,48 @@ $(function() {
         });
     });
 });
-function CalculateDateDiff(recentDate) {
-    if (recentDate != "" && !isNaN(Date.parse(recentDate))) {
-        var startDate = new Date(recentDate);
-        var thisDate = new Date();
-        var d = startDate.getDate();
+function CD(RD) {
+    if (RD != "" && !isNaN(Date.parse(RD))) {
+        var SD = new Date(RD);
+        var TD = new Date();
+        var d = SD.getDate();
         var day = (d < 10) ? '0' + d : d;
-        var m = startDate.getMonth() + 1;
+        var m = SD.getMonth() + 1;
         var month = (m < 10) ? '0' + m : m;
-        var yy = startDate.getYear();
+        var yy = SD.getYear();
         var year = (yy < 1000) ? yy + 1900 : yy;
-        var formatDate = year + "-" + month + "-" + day;
-        var dateDiff = startDate.dateDiff("y", thisDate);
-        var diffUnit = "年";
-        if (dateDiff == 0) {
-            dateDiff = startDate.dateDiff("m", thisDate);
-            diffUnit = "個月";
+        var FD = year + "-" + month + "-" + day;
+        var DD = SD.DD("y", TD);
+        var DU = "年";
+        if (DD == 0) {
+            DD = SD.DD("m", TD);
+            DU = "個月";
         }
-        if (dateDiff == 0) {
-            dateDiff = startDate.dateDiff("w", thisDate);
-            diffUnit = "週";
+        if (DD == 0) {
+            DD = SD.DD("w", TD);
+            DU = "週";
         }
-        if (dateDiff == 0) {
-            dateDiff = startDate.dateDiff("d", thisDate);
-            diffUnit = "天";
+        if (DD == 0) {
+            DD = SD.DD("d", TD);
+            DU = "天";
         }
-        if (dateDiff == 0) {
-            dateDiff = startDate.dateDiff("h", thisDate);
-            diffUnit = "小時";
+        if (DD == 0) {
+            DD = SD.DD("h", TD);
+            DU = "小時";
         }
-        if (dateDiff == 0) {
-            dateDiff = startDate.dateDiff("n", thisDate);
-            diffUnit = "分鐘";
+        if (DD == 0) {
+            DD = SD.DD("n", TD);
+            DU = "分鐘";
         }
-        if (dateDiff == 0) {
-            dateDiff = startDate.dateDiff("s", thisDate);
-            diffUnit = "秒";
+        if (DD == 0) {
+            DD = SD.DD("s", TD);
+            DU = "秒";
         }
-        return formatDate + ' 距今 ' + dateDiff + ' ' + diffUnit;
+        return FD + ' 距今 ' + DD + ' ' + DU;
     }
     return "";
 }
-Date.prototype.dateDiff = function(interval, objDate) {
+Date.prototype.DD = function(interval, objDate) {
         if (arguments.length < 2 || objDate.constructor != Date) return undefined;
         switch (interval) {
             case "s":
