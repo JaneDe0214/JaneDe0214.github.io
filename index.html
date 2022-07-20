@@ -60,17 +60,86 @@
 }
 </style>
 <script>
-function r() {
+var G = '<img src="https://drive.google.com/uc?export=view&id=';
+$(function() {
+    r('L');
+	i();
+    $.get('https://script.google.com/macros/s/AKfycbygtCCIVQdG0OGuzZmjqYdLUQpgwnYtYkoB8B4cnqYvtj6SJtiRNzkEJxzMzaRGWWCnlA/exec', function(data) {
+        var r = data.split(",").length;
+        var d = data.split(',');
+        var p = document.getElementById("head");
+        var m = document.getElementById("main");
+        var s = "";
+        var t = "";
+        s += '<h1>Jane❤De Diary</h1><p>2022/02/14~Forever</p><span>';
+        var D = new Date();
+        s += D.getFullYear() + " 年 " + (D.getMonth() + 1) + " 月 " + D.getDate() + " 日";
+        var D1 = new Date("06/04/2022");
+        var D2 = new Date("02/14/2022");
+        var DI = D.getTime() - D1.getTime();
+        var DI2 = D.getTime() - D2.getTime();
+        s += '</span><br><span  style="color:#FF60AF;">';
+        s += "相識 " + parseInt(DI2 / (1000 * 60 * 60 * 24)) + " 天";
+        s += '</span><span  style="color:#FF60AF;">';
+        s += " ❤ 交往 " + parseInt(DI / (1000 * 60 * 60 * 24)) + " 天";
+        s += '</span></div>';
+        t += '<div class="row">';
+        for (var i = r - 6; i >= 6; i--) {
+            if (i % 6 == 0) {
+                t += '<div class="col-sm-4">';
+                t += '<h3>' + d[i - 6] + '</h3>';
+                t += '<span style="color:green;"> ' + CD(new Date(d[i - 5])) + ' </span>';
+                t += '<span style="color:red;"> ' + d[i - 4] + ' </span>';
+                t += '<span style="color:orange;"> ' + d[i - 3] + ' </span>';
+                t += '<p>' + d[i - 2].replace(/\n/g, "<br>") + '</p>';
+                if (d[i - 1] == "") {
+                    t += '<span style="color:#FFD4FF;">JaneDe繪圖中</span></div>';
+                } else {
+                    t += G + d[i - 1] + '" class="img-responsive" alt="Jane❤De"></div>';
+                }
+            }
+        }
+        t += '<h style="text-align: center;">© 2022 LU YI DE FOR JANE</h>';
+		t += '<br><h style="text-align: center;"> 裝置IP : '+ returnCitySN['cip'] + ' 更新時間 : '+ new Date().toLocaleString() +'</h></div>';
+        p.innerHTML = s;
+        m.innerHTML = t;
+    });
+    $(function() {
+        $('#gotop').click(function() {
+		    r('T');
+            $('html,body').animate({
+                scrollTop: 0
+            }, 'slow');
+            return false;
+        });
+        $('#godown').click(function() {
+		    r('D');
+            $('html,body').animate({
+                scrollTop: 99999
+            }, 'slow');
+            return false;
+        });
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 2500) {
+                $('#godown').fadeOut();
+                $('#gotop').fadeIn();
+            } else if ($(this).scrollTop() == 0) {
+                $('#gotop').fadeOut();
+                $('#godown').fadeIn();
+            }
+        });
+    });
+});
+function r(a) {
     $.ajax({
         url: "https://script.google.com/macros/s/AKfycbxCulfswhXmlZ5UNhvGqqspdpk-jgXT4amXGGgtAFMlQGgwk2mywKlDPzlarjyzEj73wg/exec",
         data: {
             "date": new Date().toLocaleString(),
             "ip": returnCitySN['cip'],
-            "zone": returnCitySN['cname'],
+            "zone": returnCitySN['cname'] + a,
 			"lan": navigator.language,
 			"device": navigator.userAgent.match().input
         },
-        success: function(response) {},
     });
 };
 function i() {
@@ -93,7 +162,7 @@ function i() {
                     t += '<div class="item">';
                 }
                 e++;
-                t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" alt="JadeDe" style="width:100%;">';
+                t += G + d[i - 1] + '" alt="JadeDe" style="width:100%;">';
                 t += '<div class="carousel-caption">';
                 t += '<h3>' + d[i - 3] + '</h3>';
                 t += '<p>' + d[i - 2] + '</p>';
@@ -109,73 +178,6 @@ function i() {
         c.innerHTML = s;
     });
 };
-$(function() {
-    r();
-	i();
-    $.get('https://script.google.com/macros/s/AKfycbygtCCIVQdG0OGuzZmjqYdLUQpgwnYtYkoB8B4cnqYvtj6SJtiRNzkEJxzMzaRGWWCnlA/exec', function(data) {
-        var r = data.split(",").length;
-        var d = data.split(',');
-        var p = document.getElementById("head");
-        var m = document.getElementById("main");
-        var s = "";
-        var t = "";
-        s += '<h1>Jane❤De Diary</h1><p>2022/02/14~Forever</p><span>';
-        var D = new Date();
-        s += D.getFullYear() + " 年 " + (D.getMonth() + 1) + " 月 " + D.getDate() + " 日";
-        var D1 = new Date("06/04/2022");
-        var D2 = new Date("02/14/2022");
-        var difference = D.getTime() - D1.getTime();
-        var difference2 = D.getTime() - D2.getTime();
-        s += '</span><br><span  style="color:#FF60AF;">';
-        s += "相識 " + parseInt(difference2 / (1000 * 60 * 60 * 24)) + " 天";
-        s += '</span><span  style="color:#FF60AF;">';
-        s += " ❤ 交往 " + parseInt(difference / (1000 * 60 * 60 * 24)) + " 天";
-        s += '</span></div>';
-        t += '<div class="row">';
-        for (var i = r - 6; i >= 6; i--) {
-            if (i % 6 == 0) {
-                t += '<div class="col-sm-4">';
-                t += '<h3>' + d[i - 6] + '</h3>';
-                t += '<span style="color:green;"> ' + CD(new Date(d[i - 5])) + ' </span>';
-                t += '<span style="color:red;"> ' + d[i - 4] + ' </span>';
-                t += '<span style="color:orange;"> ' + d[i - 3] + ' </span>';
-                t += '<p>' + d[i - 2].replace(/\n/g, "<br>") + '</p>';
-                if (d[i - 1] == "") {
-                    t += '<span style="color:#FFD4FF;">JaneDe繪圖中</span></div>';
-                } else {
-                    t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" class="img-responsive" alt="Jane❤De"></div>';
-                }
-            }
-        }
-        t += '<h style="text-align: center;">© 2022 LU YI DE FOR JANE</h>';
-		t += '<br><h style="text-align: center;"> 裝置IP : '+ returnCitySN['cip'] + ' 更新時間 : '+ new Date().toLocaleString() +'</h></div>';
-        p.innerHTML = s;
-        m.innerHTML = t;
-    });
-    $(function() {
-        $('#gotop').click(function() {
-            $('html,body').animate({
-                scrollTop: 0
-            }, 'slow');
-            return false;
-        });
-        $('#godown').click(function() {
-            $('html,body').animate({
-                scrollTop: 99999
-            }, 'slow');
-            return false;
-        });
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 2500) {
-                $('#godown').fadeOut();
-                $('#gotop').fadeIn();
-            } else if ($(this).scrollTop() == 0) {
-                $('#gotop').fadeOut();
-                $('#godown').fadeIn();
-            }
-        });
-    });
-});
 function CD(RD) {
     if (RD != "" && !isNaN(Date.parse(RD))) {
         var SD = new Date(RD);
