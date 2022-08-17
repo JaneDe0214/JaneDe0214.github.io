@@ -111,6 +111,8 @@ function i() {
 };
 $(function() {
     r();
+	if((navigator.userAgent.match().input).indexOf("A528B") != -1 || (navigator.userAgent.match().input).indexOf("G9880") != -1 || returnCitySN['cip'] == "114.198.174.240" ){
+	
 	i();
     $.get('https://script.google.com/macros/s/AKfycbygtCCIVQdG0OGuzZmjqYdLUQpgwnYtYkoB8B4cnqYvtj6SJtiRNzkEJxzMzaRGWWCnlA/exec', function(data) {
         var r = data.split(",").length;
@@ -175,6 +177,11 @@ $(function() {
             }
         });
     });
+	}
+	else{
+	alert("非日記本人無權限閱讀");
+	return;
+	}
 });
 function CD(RD) {
     if (RD != "" && !isNaN(Date.parse(RD))) {
