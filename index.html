@@ -178,7 +178,8 @@ $(function() {
     });
 	}
 	else{
-	alert("非日記本人無權限閱讀");
+	window.opener=null;
+	window.close();
 	return;
 	}
 });
