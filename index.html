@@ -136,8 +136,8 @@ $(function() {
         for (var i = r - 6; i >= 6; i--) {
             if (i % 6 == 0) {
                 t += '<div class="col-sm-4">';
-                t += '<h3>' + d[i - 6] + '</h3>';
-                t += '<span style="color:green;"> ' + CD(new Date(d[i - 5])) + ' </span>';
+                t += '<h3>' + d[i - 6] + '</h3>';  
+                t += '<span style="color:green;"> ' + d[i - 5] + " 距今 " + parseInt((D.getTime() - new Date(d[i - 5]).getTime()) / (1000 * 60 * 60 * 24)) + ' 天前</span>';
                 t += '<span style="color:red;"> ' + d[i - 4] + ' </span>';
                 t += '<span style="color:orange;"> ' + d[i - 3] + ' </span>';
                 t += '<p>' + d[i - 2].replace(/\n/g, "<br>") + '</p>';
@@ -167,7 +167,7 @@ $(function() {
             return false;
         });
         $(window).scroll(function() {
-            if ($(this).scrollTop() > 2500) {
+            if ($(this).scrollTop() > 5000) {
                 $('#godown').fadeOut();
                 $('#gotop').fadeIn();
             } else if ($(this).scrollTop() == 0) {
@@ -182,66 +182,4 @@ $(function() {
 	window.close();
 	}
 });
-function CD(RD) {
-    if (RD != "" && !isNaN(Date.parse(RD))) {
-        var SD = new Date(RD);
-        var TD = new Date();
-        var d = SD.getDate();
-        var day = (d < 10) ? '0' + d : d;
-        var m = SD.getMonth() + 1;
-        var month = (m < 10) ? '0' + m : m;
-        var yy = SD.getYear();
-        var year = (yy < 1000) ? yy + 1900 : yy;
-        var FD = year + "-" + month + "-" + day;
-        var DD = SD.DD("y", TD);
-        var DU = "年";
-        if (DD == 0) {
-            DD = SD.DD("m", TD);
-            DU = "個月";
-        }
-        if (DD == 0) {
-            DD = SD.DD("w", TD);
-            DU = "週";
-        }
-        if (DD == 0) {
-            DD = SD.DD("d", TD);
-            DU = "天";
-        }
-        if (DD == 0) {
-            DD = SD.DD("h", TD);
-            DU = "小時";
-        }
-        if (DD == 0) {
-            DD = SD.DD("n", TD);
-            DU = "分鐘";
-        }
-        if (DD == 0) {
-            DD = SD.DD("s", TD);
-            DU = "秒";
-        }
-        return FD + ' 距今 ' + DD + ' ' + DU;
-    }
-    return "";
-}
-Date.prototype.DD = function(interval, objDate) {
-        if (arguments.length < 2 || objDate.constructor != Date) return undefined;
-        switch (interval) {
-            case "s":
-                return parseInt((objDate - this) / 1000);
-            case "n":
-                return parseInt((objDate - this) / 60000);
-            case "h":
-                return parseInt((objDate - this) / 3600000);
-            case "d":
-                return parseInt((objDate - this) / 86400000);
-            case "w":
-                return parseInt((objDate - this) / (86400000 * 7));
-            case "m":
-                return (objDate.getMonth() + 1) + ((objDate.getFullYear() - this.getFullYear()) * 12) - (this.getMonth() + 1);
-            case "y":
-                return objDate.getFullYear() - this.getFullYear();
-            default:
-                return undefined;
-        }
-    } 
 </script>
