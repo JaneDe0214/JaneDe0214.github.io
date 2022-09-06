@@ -142,14 +142,14 @@ $(function() {
                 t += '<span style="color:orange;"> ' + d[i - 3] + ' </span>';
                 t += '<p>' + d[i - 2].replace(/\n/g, "<br>") + '</p>';
                 if (d[i - 1] == "") {
-                    t += '<span style="color:#FFD4FF;">JaneDe繪圖中</span></div>';
+                    t += '<span style="color:#FFD4FF;">JaneDe繪圖中</span><p></div>';
                 } else {
-                    t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" class="img-fluid" alt="Jane❤De"></div>';
+                    t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" class="img-fluid" alt="Jane❤De"><p></div>';
                 }
             }
         }
         t += '<h style="text-align: center;">© 2022 LU YI DE FOR JANE</h>';
-		t += '<br><h style="text-align: center;"> 連線IP : '+ returnCitySN['cip'] + ' 更新時間 : '+ new Date().toLocaleString() +'</h></div>';
+		t += '<br><h style="text-align: center;"> 連線IP : '+ returnCitySN['cip'] + ' 時間 : '+ new Date().toLocaleString() +'</h></div>';
         p.innerHTML = s;
         m.innerHTML = t;
     });
