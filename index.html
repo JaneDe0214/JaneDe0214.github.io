@@ -4,14 +4,14 @@
         <title>JaneDe</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"/>
         <link rel="icon" href="https://drive.google.com/uc?export=view&id=1WEuzRi6WTE7exBF5W58xL44L0nlzza31"type="image/x-icon"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     </head>    
     <body>
-        <div class="container"><div id="c" class="carousel slide" data-ride="carousel"></div></div>
+        <div class="container"><div id="c" class="carousel carousel-dark slide" data-bs-ride="carousel"></div></div>
 		<div id="head" class="jumbotron text-center">進入JaneDe日記中...</div>
         <div id="main" class="container"></div>
         <a id="gotop" style="display: none;"></a>
@@ -81,30 +81,30 @@ function i() {
         var e = 0;
         var s = "";
         var t = "";
-        s += '<ol class="carousel-indicators">';
+        s += '<div class="carousel-indicators">';
         t += '<div class="carousel-inner">';
         for (var i = r - 3; i >= 3; i--) {
             if (i % 3 == 0) {
                 if (e == 0) {
-                    s += '<li data-target="#c" data-slide-to="0" class="active"></li>';
-                    t += '<div class="item active">';
+                    s += '<button type="button" data-bs-target="#c" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
+                    t += '<div class="carousel-item active">';
                 } else {
-                    s += '<li data-target="#c" data-slide-to="' + e + '"></li>';
-                    t += '<div class="item">';
+                    s += '<button type="button" data-bs-target="#c" data-bs-slide-to=' + e + 'aria-label="Slide ' + e +'" class=""></button>';
+                    t += '<div class="carousel-item">';
                 }
                 e++;
                 t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" alt="JadeDe" style="width:100%;">';
-                t += '<div class="carousel-caption">';
-                t += '<h3>' + d[i - 3] + '</h3>';
+                t += '<div class="carousel-caption d-none d-md-block">';
+                t += '<h5>' + d[i - 3] + '</h5>';
                 t += '<p>' + d[i - 2] + '</p>';
                 t += '</div>';
                 t += '</div>';
             }
         }
-        s += '</ol>';
+        s += '</div>';
         t += '</div>';
-        t += '<a class="left carousel-control" href="#c" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">上一張</span></a>';
-        t += '<a class="right carousel-control" href="#c" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">下一張</span></a>';
+        t += '<button class="carousel-control-prev" type="button" data-bs-target="#c" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>';
+        t += '<button class="carousel-control-next" type="button" data-bs-target="#c" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>';
         s += t;
         c.innerHTML = s;
     });
@@ -144,7 +144,7 @@ $(function() {
                 if (d[i - 1] == "") {
                     t += '<span style="color:#FFD4FF;">JaneDe繪圖中</span></div>';
                 } else {
-                    t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" class="img-responsive" alt="Jane❤De"></div>';
+                    t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" class="img-fluid" alt="Jane❤De"></div>';
                 }
             }
         }
