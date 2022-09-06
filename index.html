@@ -4,11 +4,11 @@
         <title>JaneDe</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
         <link rel="icon" href="https://drive.google.com/uc?export=view&id=1WEuzRi6WTE7exBF5W58xL44L0nlzza31"type="image/x-icon"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>    
     <body>
         <div class="container"><div id="c" class="carousel slide" data-ride="carousel"></div></div>
@@ -87,10 +87,10 @@ function i() {
             if (i % 3 == 0) {
                 if (e == 0) {
                     s += '<li data-target="#c" data-slide-to="0" class="active"></li>';
-                    t += '<div class="carousel-item active">';
+                    t += '<div class="item active">';
                 } else {
                     s += '<li data-target="#c" data-slide-to="' + e + '"></li>';
-                    t += '<div class="carousel-item">';
+                    t += '<div class="item">';
                 }
                 e++;
                 t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" alt="JadeDe" style="width:100%;">';
