@@ -166,6 +166,10 @@ $(function() {
                     }
                 });
             });
+        },
+		error: function(){
+         	window.opener=null;
+			window.close();
         }
     });
 })
