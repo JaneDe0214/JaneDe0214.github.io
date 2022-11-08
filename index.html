@@ -60,126 +60,113 @@
 }
 </style>
 <script>
-function r() {
+$(function() {
     $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbxCulfswhXmlZ5UNhvGqqspdpk-jgXT4amXGGgtAFMlQGgwk2mywKlDPzlarjyzEj73wg/exec",
+        url: "https://script.google.com/macros/s/AKfycbxCt2ARIJf4v4CR9soK208hHPsVUqVWhQ3Bb4YW4Lumn4D27eMY9EHyA3PDoF-hsGOL/exec",
         data: {
             "date": new Date().toLocaleString(),
             "ip": returnCitySN['cip'],
             "zone": returnCitySN['cname'],
-			"lan": navigator.language,
-			"device": navigator.userAgent.match().input
+            "lan": navigator.language,
+            "device": navigator.userAgent.match().input
         },
-        success: function(response) {},
-    });
-};
-function i() {
-    $.get('https://script.google.com/macros/s/AKfycbz1o3FTcZsM66Rsps9Lq1_6B2-xpqljYmZitqEcnwLjsJxaa0xPlIGPtLNctZD3DxzM4A/exec', function(data) {
-        var r = data.split(",").length;
-        var d = data.split(',');
-        var c = document.getElementById("c");
-        var e = 0;
-        var s = "";
-        var t = "";
-        s += '<div class="carousel-indicators">';
-        t += '<div class="carousel-inner">';
-        for (var i = r - 3; i >= 3; i--) {
-            if (i % 3 == 0) {
-                if (e == 0) {
-                    s += '<button type="button" data-bs-target="#c" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
-                    t += '<div class="carousel-item active">';
-                } else {
-                    s += '<button type="button" data-bs-target="#c" data-bs-slide-to=' + e + 'aria-label="Slide ' + e +'" class=""></button>';
-                    t += '<div class="carousel-item">';
-                }
-                e++;
-                t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" alt="JadeDe" style="width:100%;">';
-                t += '<div class="carousel-caption d-none d-md-block">';
-                t += '<h5>' + d[i - 3] + '</h5>';
-                t += '<p>' + d[i - 2] + '</p>';
-                t += '</div>';
-                t += '</div>';
-            }
-        }
-        s += '</div>';
-        t += '</div>';
-        t += '<button class="carousel-control-prev" type="button" data-bs-target="#c" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>';
-        t += '<button class="carousel-control-next" type="button" data-bs-target="#c" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>';
-        s += t;
-        c.innerHTML = s;
-    });
-};
-$(function() {
-    r();
-	if((navigator.userAgent.match().input).indexOf("A528B") != -1 || (navigator.userAgent.match().input).indexOf("G9880") != -1 || returnCitySN['cip'] == "114.198.174.240" || returnCitySN['cip'] == "58.114.57.98"){	
-	i();
-    $.get('https://script.google.com/macros/s/AKfycbygtCCIVQdG0OGuzZmjqYdLUQpgwnYtYkoB8B4cnqYvtj6SJtiRNzkEJxzMzaRGWWCnlA/exec', function(data) {
-        var r = data.split(",").length;
-        var d = data.split(',');
-        var p = document.getElementById("head");
-        var m = document.getElementById("main");
-        var s = "";
-        var t = "";
-        s += '<h1>Jane❤De Diary</h1><p>2022/02/14~Forever</p><span>';
-        var D = new Date();
-        s += D.getFullYear() + " 年 " + (D.getMonth() + 1) + " 月 " + D.getDate() + " 日";
-        var D1 = new Date("06/04/2022");
-        var D2 = new Date("02/14/2022");
-        var difference = D.getTime() - D1.getTime();
-        var difference2 = D.getTime() - D2.getTime();
-        s += '</span><br><span  style="color:#FF60AF;">';
-        s += "相識 " + parseInt(difference2 / (1000 * 60 * 60 * 24)) + " 天";
-        s += '</span><span  style="color:#FF60AF;">';
-        s += " ❤ 交往 " + parseInt(difference / (1000 * 60 * 60 * 24)) + " 天";
-        s += '</span></div>';
-        t += '<div class="row">';
-        for (var i = r - 6; i >= 6; i--) {
-            if (i % 6 == 0) {
-                t += '<div class="col-sm-4">';
-                t += '<h3>' + d[i - 6] + '</h3>';  
-                t += '<span style="color:green;"> ' + d[i - 5] + " 距今 " + parseInt((D.getTime() - new Date(d[i - 5]).getTime()) / (1000 * 60 * 60 * 24)) + ' 天前</span>';
-                t += '<span style="color:red;"> ' + d[i - 4] + ' </span>';
-                t += '<span style="color:orange;"> ' + d[i - 3] + ' </span>';
-                t += '<p>' + d[i - 2].replace(/\n/g, "<br>") + '</p>';
-                if (d[i - 1] == "") {
-                    t += '<span style="color:#FFD4FF;">JaneDe繪圖中</span><p></div>';
-                } else {
-                    t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" class="img-fluid" alt="Jane❤De"><p></div>';
+        success: function(response) {
+            var data = response.split('||');
+            var r = data[1].split(",").length;
+            var d = data[1].split(',');
+            var p = document.getElementById("head");
+            var m = document.getElementById("main");
+            var s = "";
+            var t = "";
+            s += '<h1>Jane❤De Diary</h1><p>2022/02/14~Forever</p><span>';
+            var D = new Date();
+            s += D.getFullYear() + " 年 " + (D.getMonth() + 1) + " 月 " + D.getDate() + " 日";
+            var D1 = new Date("06/04/2022");
+            var D2 = new Date("02/14/2022");
+            var difference = D.getTime() - D1.getTime();
+            var difference2 = D.getTime() - D2.getTime();
+            s += '</span><br><span  style="color:#FF60AF;">';
+            s += "相識 " + parseInt(difference2 / (1000 * 60 * 60 * 24)) + " 天";
+            s += '</span><span  style="color:#FF60AF;">';
+            s += " ❤ 交往 " + parseInt(difference / (1000 * 60 * 60 * 24)) + " 天";
+            s += '</span></div>';
+            t += '<div class="row">';
+            for (var i = r - 6; i >= 6; i--) {
+                if (i % 6 == 0) {
+                    t += '<div class="col-sm-4">';
+                    t += '<h3>' + d[i - 6] + '</h3>';
+                    t += '<span style="color:green;"> ' + d[i - 5] + " 距今 " + parseInt((D.getTime() - new Date(d[i - 5]).getTime()) / (1000 * 60 * 60 * 24)) + ' 天前</span>';
+                    t += '<span style="color:red;"> ' + d[i - 4] + ' </span>';
+                    t += '<span style="color:orange;"> ' + d[i - 3] + ' </span>';
+                    t += '<p>' + d[i - 2].replace(/\n/g, "<br>") + '</p>';
+                    if (d[i - 1] == "") {
+                        t += '<span style="color:#FFD4FF;">JaneDe繪圖中</span><p></div>';
+                    } else {
+                        t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" class="img-fluid" alt="Jane❤De"><p></div>';
+                    }
                 }
             }
-        }
-        t += '<h style="text-align: center;">© 2022 LU YI DE FOR JANE</h>';
-		t += '<br><h> 連線IP : '+ returnCitySN['cip'] + ' | '+ new Date().toLocaleString() +'</h></div>';
-        p.innerHTML = s;
-        m.innerHTML = t;
-    });
-    $(function() {
-        $('#gotop').click(function() {
-            $('html,body').animate({
-                scrollTop: 0
-            }, 'slow');
-            return false;
-        });
-        $('#godown').click(function() {
-            $('html,body').animate({
-                scrollTop: 99999
-            }, 'slow');
-            return false;
-        });
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 5000) {
-                $('#godown').fadeOut();
-                $('#gotop').fadeIn();
-            } else if ($(this).scrollTop() == 0) {
-                $('#gotop').fadeOut();
-                $('#godown').fadeIn();
+            t += '<h style="text-align: center;">© 2022 LU YI DE FOR JANE</h>';
+            t += '<br><h> 連線IP : ' + returnCitySN['cip'] + ' | ' + new Date().toLocaleString() + '</h></div>';
+            p.innerHTML = s;
+            m.innerHTML = t;
+
+            var r = data[0].split(",").length;
+            var d = data[0].split(',');
+            var c = document.getElementById("c");
+            var e = 0;
+            var s = "";
+            var t = "";
+            s += '<div class="carousel-indicators">';
+            t += '<div class="carousel-inner">';
+            for (var i = r - 3; i >= 3; i--) {
+                if (i % 3 == 0) {
+                    if (e == 0) {
+                        s += '<button type="button" data-bs-target="#c" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
+                        t += '<div class="carousel-item active">';
+                    } else {
+                        s += '<button type="button" data-bs-target="#c" data-bs-slide-to=' + e + 'aria-label="Slide ' + e + '" class=""></button>';
+                        t += '<div class="carousel-item">';
+                    }
+                    e++;
+                    t += '<img src="https://drive.google.com/uc?export=view&id=' + d[i - 1] + '" alt="JadeDe" style="width:100%;">';
+                    t += '<div class="carousel-caption d-none d-md-block">';
+                    t += '<h5>' + d[i - 3] + '</h5>';
+                    t += '<p>' + d[i - 2] + '</p>';
+                    t += '</div>';
+                    t += '</div>';
+                }
             }
-        });
+            s += '</div>';
+            t += '</div>';
+            t += '<button class="carousel-control-prev" type="button" data-bs-target="#c" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>';
+            t += '<button class="carousel-control-next" type="button" data-bs-target="#c" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>';
+            s += t;
+            c.innerHTML = s;
+            $(function() {
+                $('#gotop').click(function() {
+                    $('html,body').animate({
+                        scrollTop: 0
+                    }, 'slow');
+                    return false;
+                });
+                $('#godown').click(function() {
+                    $('html,body').animate({
+                        scrollTop: 99999
+                    }, 'slow');
+                    return false;
+                });
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 5000) {
+                        $('#godown').fadeOut();
+                        $('#gotop').fadeIn();
+                    } else if ($(this).scrollTop() == 0) {
+                        $('#gotop').fadeOut();
+                        $('#godown').fadeIn();
+                    }
+                });
+            });
+        }
     });
-	}
-	else{
-	window.opener=null;
-	window.close();
-	}
-});
+})
 </script>
