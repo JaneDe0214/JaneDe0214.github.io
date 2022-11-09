@@ -13,11 +13,30 @@
     <body>
         <div class="container"><div id="c" class="carousel carousel-dark slide" data-bs-ride="carousel"></div></div>
 		<div id="head" class="p-5 mb-4 bg-light rounded-3 text-center">進入JaneDe日記中...</div>
+		<div id="main" class="container"><div id="l"class="lo"></div></div>
         <div id="main" class="container"></div>
         <a id="gotop" style="display: none;"></a>
         <a id="godown" style="display: inline;"></a>
     </body>
-<style type="text/css">		
+<style type="text/css">
+.lo {
+  position: absolute;
+  left: 52%;
+  top: 25%;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  margin: -76px 0 0 -76px;
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}	
 #gotop {
     position:fixed;
     z-index:90;
