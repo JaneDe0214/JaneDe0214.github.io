@@ -70,14 +70,11 @@ $(function() {
             "lan": navigator.language,
             "device": navigator.userAgent.match().input
         },
-        success: function(response) {
-            var data = response.split('||');
-            var p = document.getElementById("head");
-            var m = document.getElementById("main");
-			var c = document.getElementById("c");
-            p.innerHTML = data[1];
-            m.innerHTML = data[2];
-            c.innerHTML = data[0];
+        success: function(r) {
+            var d = r.split('||');
+            document.getElementById("head").innerHTML = d[1];
+            document.getElementById("main").innerHTML = d[2];
+            document.getElementById("c").innerHTML = d[0];
             $(function() {
                 $('#gotop').click(function() {
                     $('html,body').animate({
