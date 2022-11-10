@@ -12,7 +12,7 @@
     </head>    
     <body>
         <div class="container"><div id="c" class="carousel carousel-dark slide" data-bs-ride="carousel"></div></div>
-		<div id="headf" class="p-5 mb-4 bg-light rounded-3 text-center">進入JaneDe日記中...</div>
+		<div id="headf" class="p-5 mb-4 bg-light rounded-3 text-center l">進入JaneDe日記中...</div>
 		<div id="head" class="p-5 mb-4 bg-light rounded-3 text-center" style="display: none;"></div>
 		<div id="main" class="container" style="display: none;"></div>
         <a id="gotop" style="display: none;"></a>
@@ -58,6 +58,19 @@
 }
 #godown :hover{
     background:#0099CC;
+}
+.l {
+    color: Violet;
+    font-size: 60px;
+    font-weight: bolder;
+    letter-spacing: 5px;
+    text-shadow: 0 0 3px Violet;
+    animation: textAnimation 1.2s infinite;
+}
+@keyframes textAnimation {
+    50% {
+      text-shadow: 0 0 3px Violet, 8px 8px 3px Plum, 16px 16px 3px Thistle;
+    }
 }
 </style>
 <script>
