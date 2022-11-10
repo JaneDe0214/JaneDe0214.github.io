@@ -12,7 +12,8 @@
     </head>    
     <body>
         <div class="container"><div id="c" class="carousel carousel-dark slide" data-bs-ride="carousel"></div></div>
-		<div id="head" class="p-5 mb-4 bg-light rounded-3 text-center">進入JaneDe日記中...</div>
+		<div id="headf" class="p-5 mb-4 bg-light rounded-3 text-center">進入JaneDe日記中...</div>
+		<div id="head" class="p-5 mb-4 bg-light rounded-3 text-center" style="display: none;"></div>
 		<div id="main" class="container" style="display: none;"></div>
         <a id="gotop" style="display: none;"></a>
         <a id="godown" style="display: inline;"></a>
@@ -71,12 +72,12 @@ $(function() {
             "m": navigator.userAgent.match().input
         },
         success: function(r) {
-			$("#head").fadeOut("fast");
+			$("#headf").hide();
+			$("#head").fadeIn("slow");
             var d = r.split('||');
             document.getElementById("head").innerHTML = d[1];
             document.getElementById("main").innerHTML = d[2];
             document.getElementById("c").innerHTML = d[0];
-			$("#head").fadeIn("slow");
 			$("#main").fadeIn("slow");
 			$("#c").fadeIn("slow");
             $(function() {
