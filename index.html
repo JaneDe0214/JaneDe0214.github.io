@@ -11,15 +11,15 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </head>    
     <body>
-        <div class="container"><div id="c" class="carousel carousel-dark slide" data-bs-ride="carousel"></div></div>
-		<div id="headf" class="p-5 mb-4 bg-light rounded-3 text-center l">Jane❤De Diary Loading...</div>
-		<div id="head" class="p-5 mb-4 bg-light rounded-3 text-center" style="display: none;"></div>
-		<div id="main" class="container" style="display: none;"></div>
-        <a id="gotop" style="display: none;"></a>
-        <a id="godown" style="display: inline;"></a>
+        <div class="container"><div id="c" class="carousel carousel slide" data-bs-ride="carousel"></div></div>
+		<div id="hf" class="p-5 mb-4 bg-light rounded-3 text-center l">Jane❤De Diary Loading...</div>
+		<div id="h" class="p-5 mb-4 bg-light rounded-3 text-center" style="display: none;"></div>
+		<div id="m" class="container" style="display: none;"></div>
+        <a id="gt" style="display: none;"></a>
+        <a id="gd" style="display: inline;"></a>
     </body>
 <style type="text/css">	
-#gotop {
+#gt {
     position:fixed;
     z-index:90;
     right:30px;
@@ -36,10 +36,10 @@
     text-align: center;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
-#gotop :hover{
+#gt :hover{
     background:#0099CC;
 }
-#godown {
+#gd {
     position:fixed;
     z-index:90;
     right:30px;
@@ -56,7 +56,7 @@
     text-align: center;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
-#godown :hover{
+#gd :hover{
     background:#0099CC;
 }
 .l {
@@ -83,22 +83,22 @@ $(function() {
             "m": navigator.userAgent.match().input
         },
         success: function(r) {
-			$("#headf").hide();
-			$("#head").fadeIn("slow");
+			$("#hf").hide();
+			$("#h").fadeIn("slow");
             var d = r.split('||');
-            document.getElementById("head").innerHTML = d[1];
-            document.getElementById("main").innerHTML = d[2];
-            document.getElementById("c").innerHTML = d[0];
-			$("#main").fadeIn("slow");
+            $("#h").html(d[1]);
+            $("#m").html(d[2]);
+            $("#c").html(d[0]);
+			$("#m").fadeIn("slow");
 			$("#c").fadeIn("slow");
             $(function() {
-                $('#gotop').click(function() {
+                $('#gt').click(function() {
                     $('html,body').animate({
                         scrollTop: 0
                     }, 'slow');
                     return false;
                 });
-                $('#godown').click(function() {
+                $('#gd').click(function() {
                     $('html,body').animate({
                         scrollTop: 999999
                     }, 'slow');
@@ -106,11 +106,11 @@ $(function() {
                 });
                 $(window).scroll(function() {
                     if ($(this).scrollTop() > 5000) {
-                        $('#godown').fadeOut();
-                        $('#gotop').fadeIn();
+                        $('#gd').fadeOut();
+                        $('#gt').fadeIn();
                     } else if ($(this).scrollTop() == 0) {
-                        $('#gotop').fadeOut();
-                        $('#godown').fadeIn();
+                        $('#gt').fadeOut();
+                        $('#gd').fadeIn();
                     }
                 });
             });
