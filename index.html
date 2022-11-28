@@ -80,7 +80,7 @@ $(function() {
             $.ajax({
                 url: u,
                 data: {
-                    "d":new Date(),"i":i,"z":z,"l":l,"m":m,"f":0
+                    "d":new Date().toLocaleString(),"i":i,"z":z,"l":l,"m":m,"f":0
                 },
                 success: function(r) {
                     $("#hf").hide();
@@ -125,7 +125,7 @@ function a(q) {
     $.ajax({
         url: u,
         data: {
-            "d":new Date(),"i":i,"z":z,"l":l,"m":m,"f":q
+            "d":new Date().toLocaleString(),"i":i,"z":z,"l":l,"m":m,"f":q
         }
     });
 }
