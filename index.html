@@ -71,20 +71,16 @@
 }
 </style>
 <script>
-var c;
-var i;
-var z;
-var l = navigator.language;
-var m = navigator.userAgent.match().input;
+var c,i,z,l = navigator.language,m = navigator.userAgent.match().input;
 $(function() {
     $.getJSON('https://api.db-ip.com/v2/free/self',
-	i = data.ipAddress;
-	z = data.countryName + " / " + data.city + " / ";
     function(data) {
+		i = data.ipAddress;
+		z = data.countryName + " / " + data.city + " / ";
         $.ajax({
             url: "https://script.google.com/macros/s/AKfycbxCt2ARIJf4v4CR9soK208hHPsVUqVWhQ3Bb4YW4Lumn4D27eMY9EHyA3PDoF-hsGOL/exec",
             data: {
-                "d": new Date().toLocaleString(),
+                "d": new Date(),
                 "i": i,
                 "z": z,
                 "l": l,
@@ -137,13 +133,14 @@ function album() {
   $.ajax({
     url: "https://script.google.com/macros/s/AKfycbxCt2ARIJf4v4CR9soK208hHPsVUqVWhQ3Bb4YW4Lumn4D27eMY9EHyA3PDoF-hsGOL/exec",
     data: {
-        "d": new Date().toLocaleString(),
+        "d": new Date(),
         "i": i,
         "z": z,
         "l": l,
         "m": m,
 		"f": 1
-    }	
+    }
+  });	
   $("#c").html(c);
   $("#b").slideToggle();
 }
