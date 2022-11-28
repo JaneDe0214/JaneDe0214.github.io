@@ -71,9 +71,7 @@
 }
 </style>
 <script>
-var c, i, z, l = navigator.language,
-    m = navigator.userAgent.match().input,
-    u = "https://script.google.com/macros/s/AKfycbxCt2ARIJf4v4CR9soK208hHPsVUqVWhQ3Bb4YW4Lumn4D27eMY9EHyA3PDoF-hsGOL/exec";
+var c,i,z,l=navigator.language,m=navigator.userAgent.match().input,u="https://script.google.com/macros/s/AKfycbxCt2ARIJf4v4CR9soK208hHPsVUqVWhQ3Bb4YW4Lumn4D27eMY9EHyA3PDoF-hsGOL/exec";
 $(function() {
     $.getJSON('https://api.db-ip.com/v2/free/self',
         function(data) {
@@ -82,12 +80,7 @@ $(function() {
             $.ajax({
                 url: u,
                 data: {
-                    "d": new Date(),
-                    "i": i,
-                    "z": z,
-                    "l": l,
-                    "m": m,
-                    "f": 0
+                    "d":new Date(),"i":i,"z":z,"l":l,"m":m,"f":0
                 },
                 success: function(r) {
                     $("#hf").hide();
@@ -101,18 +94,12 @@ $(function() {
                     $(function() {
                         $('#gt').click(function() {
                             a(2);
-                            $('html,body').animate({
-                                    scrollTop: 0
-                                },
-                                'fast');
+                            $('html,body').animate({scrollTop: 0},'fast');
                             return false;
                         });
                         $('#gd').click(function() {
                             a(3);
-                            $('html,body').animate({
-                                    scrollTop: 999999
-                                },
-                                'fast');
+                            $('html,body').animate({scrollTop: 999999},'fast');
                             return false;
                         });
                         $(window).scroll(function() {
@@ -120,11 +107,9 @@ $(function() {
                                 $('#gd').fadeOut();
                                 $('#gt').fadeIn();
                             } else if ($(this).scrollTop() == 0) {
-                                a(5);
+                                a(4);
                                 $('#gt').fadeOut();
                                 $('#gd').fadeIn();
-                            } else if ($(this).scrollHeight() - $(this).scrollTop() == $(this).clientHeight()) {												
-                                a(4);
                             }						
                         });
                     });
@@ -140,12 +125,7 @@ function a(q) {
     $.ajax({
         url: u,
         data: {
-            "d": new Date(),
-            "i": i,
-            "z": z,
-            "l": l,
-            "m": m,
-            "f": q
+            "d":new Date(),"i":i,"z":z,"l":l,"m":m,"f":q
         }
     });
 }
