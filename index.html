@@ -114,11 +114,12 @@ $(function() {
                         return false;
                     });
                     $(window).scroll(function() {
-                        if ($(this).scrollTop() > 5000) {
-							a(4);
+                        if ($(this).scrollTop() > 5000) {							
                             $('#gd').fadeOut();
                             $('#gt').fadeIn();
-                        } else if ($(this).scrollTop() == 0) {
+                        } else if ($(this).scrollTop() == 5000){
+							a(4);
+						} else if ($(this).scrollTop() == 0) {
 							a(5);
                             $('#gt').fadeOut();
                             $('#gd').fadeIn();
