@@ -71,14 +71,14 @@
 }
 </style>
 <script>
-var c,i,z,l = navigator.language,m = navigator.userAgent.match().input;
+var c,i,z,l = navigator.language,m = navigator.userAgent.match().input,u = "https://script.google.com/macros/s/AKfycbxCt2ARIJf4v4CR9soK208hHPsVUqVWhQ3Bb4YW4Lumn4D27eMY9EHyA3PDoF-hsGOL/exec";
 $(function() {
     $.getJSON('https://api.db-ip.com/v2/free/self',
     function(data) {
 		i = data.ipAddress;
 		z = data.countryName + " / " + data.city + " / ";
         $.ajax({
-            url: "https://script.google.com/macros/s/AKfycbxCt2ARIJf4v4CR9soK208hHPsVUqVWhQ3Bb4YW4Lumn4D27eMY9EHyA3PDoF-hsGOL/exec",
+            url: u,
             data: {
                 "d": new Date(),
                 "i": i,
@@ -98,24 +98,28 @@ $(function() {
                 $("#c").fadeIn("slow");
                 $(function() {
                     $('#gt').click(function() {
+						a(2);
                         $('html,body').animate({
                             scrollTop: 0
                         },
-                        'slow');
+                        'fast');
                         return false;
                     });
                     $('#gd').click(function() {
+						a(3);
                         $('html,body').animate({
                             scrollTop: 999999
                         },
-                        'slow');
+                        'fast');
                         return false;
                     });
                     $(window).scroll(function() {
                         if ($(this).scrollTop() > 5000) {
+							a(4);
                             $('#gd').fadeOut();
                             $('#gt').fadeIn();
                         } else if ($(this).scrollTop() == 0) {
+							a(5);
                             $('#gt').fadeOut();
                             $('#gd').fadeIn();
                         }
@@ -129,18 +133,16 @@ $(function() {
         });
     })
 });
-function album() {
+function a(q) {
   $.ajax({
-    url: "https://script.google.com/macros/s/AKfycbxCt2ARIJf4v4CR9soK208hHPsVUqVWhQ3Bb4YW4Lumn4D27eMY9EHyA3PDoF-hsGOL/exec",
+    url: u,
     data: {
-        "d": new Date(),
-        "i": i,
-        "z": z,
-        "l": l,
-        "m": m,
-		"f": 1
+        "d": new Date(),"i": i,"z": z,"l": l,"m": m,"f": q
     }
-  });	
+  });
+}
+function album() {	
+  a(1);
   $("#c").html(c);
   $("#b").slideToggle();
 }
