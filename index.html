@@ -71,18 +71,25 @@
 }
 </style>
 <script>
-var c ="";
+var c;
+var i;
+var z;
+var l = navigator.language;
+var m = navigator.userAgent.match().input;
 $(function() {
     $.getJSON('https://api.db-ip.com/v2/free/self',
+	i = data.ipAddress;
+	z = data.countryName + " / " + data.city + " / ";
     function(data) {
         $.ajax({
             url: "https://script.google.com/macros/s/AKfycbxCt2ARIJf4v4CR9soK208hHPsVUqVWhQ3Bb4YW4Lumn4D27eMY9EHyA3PDoF-hsGOL/exec",
             data: {
                 "d": new Date().toLocaleString(),
-                "i": data.ipAddress,
-                "z": data.countryName + " / " + data.city + " / ",
-                "l": navigator.language,
-                "m": navigator.userAgent.match().input
+                "i": i,
+                "z": z,
+                "l": l,
+                "m": m,
+				"f": 0,
             },
             success: function(r) {
                 $("#hf").hide();
@@ -126,8 +133,17 @@ $(function() {
         });
     })
 });
-
 function album() {
+  $.ajax({
+    url: "https://script.google.com/macros/s/AKfycbxCt2ARIJf4v4CR9soK208hHPsVUqVWhQ3Bb4YW4Lumn4D27eMY9EHyA3PDoF-hsGOL/exec",
+    data: {
+        "d": new Date().toLocaleString(),
+        "i": i,
+        "z": z,
+        "l": l,
+        "m": m,
+		"f": 1
+    }	
   $("#c").html(c);
   $("#b").slideToggle();
 }
