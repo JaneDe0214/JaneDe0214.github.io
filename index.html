@@ -71,80 +71,85 @@
 }
 </style>
 <script>
-var c,i,z,l = navigator.language,m = navigator.userAgent.match().input,u = "https://script.google.com/macros/s/AKfycbxCt2ARIJf4v4CR9soK208hHPsVUqVWhQ3Bb4YW4Lumn4D27eMY9EHyA3PDoF-hsGOL/exec";
+var c, i, z, l = navigator.language,
+    m = navigator.userAgent.match().input,
+    u = "https://script.google.com/macros/s/AKfycbxCt2ARIJf4v4CR9soK208hHPsVUqVWhQ3Bb4YW4Lumn4D27eMY9EHyA3PDoF-hsGOL/exec";
 $(function() {
     $.getJSON('https://api.db-ip.com/v2/free/self',
-    function(data) {
-		i = data.ipAddress;
-		z = data.countryName + " / " + data.city + " / ";
-        $.ajax({
-            url: u,
-            data: {
-                "d": new Date(),
-                "i": i,
-                "z": z,
-                "l": l,
-                "m": m,
-				"f": 0,
-            },
-            success: function(r) {
-                $("#hf").hide();
-                $("#h").fadeIn("slow");
-                var d = r.split('||');
-                $("#h").html(d[1]);
-                $("#m").html(d[2]);
-				c = d[0];               
-                $("#m").fadeIn("slow");
-                $("#c").fadeIn("slow");
-                $(function() {
-                    $('#gt').click(function() {
-						a(2);
-                        $('html,body').animate({
-                            scrollTop: 0
-                        },
-                        'fast');
-                        return false;
+        function(data) {
+            i = data.ipAddress;
+            z = data.countryName + " / " + data.city + " / ";
+            $.ajax({
+                url: u,
+                data: {
+                    "d": new Date(),
+                    "i": i,
+                    "z": z,
+                    "l": l,
+                    "m": m,
+                    "f": 0,
+                },
+                success: function(r) {
+                    $("#hf").hide();
+                    $("#h").fadeIn("slow");
+                    var d = r.split('||');
+                    $("#h").html(d[1]);
+                    $("#m").html(d[2]);
+                    c = d[0];
+                    $("#m").fadeIn("slow");
+                    $("#c").fadeIn("slow");
+                    $(function() {
+                        $('#gt').click(function() {
+                            a(2);
+                            $('html,body').animate({
+                                    scrollTop: 0
+                                },
+                                'fast');
+                            return false;
+                        });
+                        $('#gd').click(function() {
+                            a(3);
+                            $('html,body').animate({
+                                    scrollTop: 999999
+                                },
+                                'fast');
+                            return false;
+                        });
+                        $(window).scroll(function() {
+                            if ($(this).scrollTop() > 5000) {
+                                $('#gd').fadeOut();
+                                $('#gt').fadeIn();
+                            } else if ($(this).scrollTop() == 0) {
+                                a(5);
+                                $('#gt').fadeOut();
+                                $('#gd').fadeIn();
+                            }
+                        });
                     });
-                    $('#gd').click(function() {
-						a(3);
-                        $('html,body').animate({
-                            scrollTop: 999999
-                        },
-                        'fast');
-                        return false;
-                    });
-                    $(window).scroll(function() {
-                        if ($(this).scrollTop() > 5000) {							
-                            $('#gd').fadeOut();
-                            $('#gt').fadeIn();
-                        } else if ($(this).scrollTop() == 5000){
-							a(4);
-						} else if ($(this).scrollTop() == 0) {
-							a(5);
-                            $('#gt').fadeOut();
-                            $('#gd').fadeIn();
-                        }
-                    });
-                });
-            },
-            error: function() {
-                window.opener = null;
-                window.close();
-            }
-        });
-    })
+                },
+                error: function() {
+                    window.opener = null;
+                    window.close();
+                }
+            });
+        })
 });
 function a(q) {
-  $.ajax({
-    url: u,
-    data: {
-        "d": new Date(),"i": i,"z": z,"l": l,"m": m,"f": q
-    }
-  });
+    $.ajax({
+        url: u,
+        data: {
+            "d": new Date(),
+            "i": i,
+            "z": z,
+            "l": l,
+            "m": m,
+            "f": q
+        }
+    });
 }
-function album() {	
-  a(1);
-  $("#c").html(c);
-  $("#b").slideToggle();
+function album() {
+    a(1);
+    $("#c").html(c);
+    $("#b").slideToggle();
 }
 </script>
